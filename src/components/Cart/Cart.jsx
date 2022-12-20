@@ -1,7 +1,9 @@
-import classes from './Cart.module.css'
-import { Modal } from '../UI/Modal'
-import { CartItem } from './CartItem'
 import { useContext } from 'react'
+
+import { CartItem } from './CartItem'
+import { Modal } from '../UI/Modal'
+import classes from './Cart.module.css'
+
 import { CartContext } from './../../store/cart-context'
 
 export const Cart = ({ onHideCart }) => {
@@ -9,8 +11,14 @@ export const Cart = ({ onHideCart }) => {
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
   const hasItems = cartCtx.items.length > 0
-  const cartItemRemoveHandler = id => {}
-  const cartItemAddHandler = item => {}
+
+  const cartItemRemoveHandler = id => {
+    cartCtx.removeItem(id)
+  }
+  
+  const cartItemAddHandler = item => {
+    cartCtx.addItem({...item, amount: 1})
+  }
   
   const cartItems = (
     <ul className={classes['cart-items']}>
