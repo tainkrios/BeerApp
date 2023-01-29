@@ -28,8 +28,6 @@ export const Cart = ({ onHideCart }) => {
     setIsCheckout(true)
   }
 
-  // https://api.telegram.org/bot5632155343:AAG0tEUJa0kwdvXDifV5b5Vm0UmBDnvFfCQ/POST
-
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true)
     const response = await fetch(
