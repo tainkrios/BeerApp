@@ -1,0 +1,83 @@
+.form {
+  margin: 1rem 0;
+  height: 18rem;
+  overflow: auto;
+}
+
+.control {
+  margin-bottom: 0.5rem;
+}
+
+.control label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.control input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.actions button {
+  font: inherit;
+  color: #0e1747;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #060b22;
+  color: #f1f1f1;
+}
+
+.actions button.submit {
+  border: 1px solid #0e1747;
+  background-color: #0e1747;
+  color: white;
+}
+
+.actions button.submit:hover,
+.actions button.submit:active {
+  background-color: #060b22;
+}
+
+.actions button.submit:disabled,
+.actions button.submit:disabled:hover,
+.actions button.submit:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.invalid label {
+  color: #ca3e51;
+}
+
+.invalid input {
+  border: 1px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+.invalid input:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
+}
+
+.error-text {
+  color: #b40e0e;
+}
