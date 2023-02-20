@@ -6,7 +6,7 @@ export const Header = ({onShowCart}) => {
   return (
     <>
       <header className={classes.header}>
-        <h1>Meals</h1>
+        <h1>Beers</h1>
         <HeaderCartButton onClick={onShowCart} />
       </header>
       <div className={classes['main-image']}>

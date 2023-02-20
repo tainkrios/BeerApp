@@ -30,16 +30,30 @@ export const Cart = ({ onHideCart }) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true)
-    const response = await fetch(
-      'https://react-http-c9f0c-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
+    // const response = await fetch(
+    //   'https://react-http-c9f0c-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
+    //   {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       user: userData,
+    //       orderItems: cartCtx.items,
+    //     }),
+    //   }
+    // )
+    const response = await fetch('https://api.telegram.org/bot5632155343:AAG0tEUJa0kwdvXDifV5b5Vm0UmBDnvFfCQ/sendMessage',
       {
         method: 'POST',
-        body: JSON.stringify({
-          user: userData,
-          orderItems: cartCtx.items,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: 130074783, text: {
+          name: userData.name,
+          street: userData.street,
+          ZipCode: userData.postal,
+          city: userData.city,
+          orderItems: cartCtx.items
+        } }),
       }
     )
+    const json = await response.json()
 
     if (!response.ok) {
       throw new Error('Something went wrong!')

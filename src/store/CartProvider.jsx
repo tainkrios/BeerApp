@@ -19,8 +19,6 @@ const cartReducer = (state, action) => {
 
     let updatedItems
 
-    console.log(updatedItems)
-
     if (existingCartItem) {
       const updatedItem = {
         ...existingCartItem,
@@ -31,7 +29,6 @@ const cartReducer = (state, action) => {
       updatedItems[existingCartItemIndex] = updatedItem
     } else {
       updatedItems = state.items.concat(action.item)
-      console.log(updatedItems)
     }
 
     return {
@@ -52,16 +49,16 @@ const cartReducer = (state, action) => {
     let updatedItems
 
     if (existingItem.amount === 1) {
-      updatedItems = state.items.filter(item => item.id !== action.id)
+      updatedItems = state.items.filter((item) => item.id !== action.id)
     } else {
-      const updatedItem = {...existingItem, amount: existingItem.amount - 1}
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 }
       updatedItems = [...state.items]
       updatedItems[existingCartItemIndex] = updatedItem
     }
 
-    return{ 
+    return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount
+      totalAmount: updatedTotalAmount,
     }
   }
 
@@ -87,7 +84,7 @@ export const CartProvider = ({ children }) => {
   }
 
   const clearCartHandler = () => {
-    dispatchCartAction({type: 'CLEAR'})
+    dispatchCartAction({ type: 'CLEAR' })
   }
 
   const cartContext = {
@@ -95,7 +92,7 @@ export const CartProvider = ({ children }) => {
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
-    clearCart: clearCartHandler
+    clearCart: clearCartHandler,
   }
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
